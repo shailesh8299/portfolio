@@ -1,718 +1,383 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shailesh Mishra - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>Shailesh Mishra | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #6e4cff;
-      --primary-dark: #4d2db7;
-      --accent: #09e6ae;
-      --accent-dark: #04b480;
-      --bg-gradient: linear-gradient(135deg, #1e1a2b 0%, #4d2db7 100%);
-      --card-bg: rgba(34, 33, 44, 0.92);
-      --card-bg-light: rgba(255,255,255,0.07);
-      --surface: #232136;
-      --surface-light: #2a2840;
-      --text: #fff;
-      --text-muted: #c4c4c4;
-      --shadow: 0 2px 24px 0 #0d1128c0;
+      --primary: #5B21B6;
+      --secondary: #7C3AED;
+      --bg: #F3F4F6;
+      --bg-alt: #E0E7FF;
+      --text: #18181B;
+      --text-light: #71717A;
+      --white: #fff;
+      --shadow: 0 4px 24px rgba(91,33,182,0.08);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html {
-      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-      background: var(--bg-gradient);
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
       color: var(--text);
-      scroll-behavior: smooth;
-      min-height: 100vh;
-      transition: background 0.5s;
+      background: var(--bg);
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s;
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    a:hover, a:focus {
-      color: var(--accent-dark);
-      text-decoration: underline;
-    }
-    nav {
-      position: fixed;
-      top: 0; left: 0; width: 100vw;
-      background: var(--surface);
+    .navbar {
+      background: var(--white);
       box-shadow: var(--shadow);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 3vw 0.8rem 3vw;
-      transition: background 0.3s;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    nav .logo {
+    .logo {
       font-weight: 700;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: var(--primary);
       letter-spacing: 1px;
-      font-family: inherit;
-      user-select: none;
     }
-    nav ul {
+    .nav-links {
       list-style: none;
+      padding: 0;
+      margin: 0;
       display: flex;
-      gap: 2rem;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.07rem;
-    }
-    nav ul li.active a {
-      border-bottom: 2.5px solid var(--accent);
-      padding-bottom: 2px;
-      color: var(--accent);
-    }
-    nav ul li a {
-      color: var(--text);
-      padding: 0.25rem 0;
-      border-radius: 1.5px;
-      transition: color 0.2s, background 0.2s;
-      outline: none;
-    }
-    nav ul li a:focus {
-      background: var(--card-bg-light);
-      color: var(--accent);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-    .hamburger div {
-      width: 27px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .hamburger.active div:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-    .hamburger.active div:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active div:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* Responsive nav */
-    @media (max-width: 900px) {
-      nav { padding-left: 4vw; padding-right: 4vw; }
-      nav ul { gap: 1.25rem; }
-    }
-    @media (max-width: 768px) {
-      nav ul {
-        position: fixed;
-        top: 58px; right: 0;
-        background: var(--surface-light);
-        height: calc(100vh - 58px);
-        width: 210px;
-        flex-direction: column;
-        align-items: start;
-        padding: 2.1rem 1.3rem;
-        gap: 1.2rem;
-        transform: translateX(110%);
-        transition: transform 0.32s cubic-bezier(.29,.95,.52,1.03);
-        box-shadow: var(--shadow);
-      }
-      nav ul.open { transform: translateX(0); }
-      .hamburger { display: flex; }
-    }
-    @media (max-width: 500px) {
-      nav { padding-left: 2vw; padding-right: 2vw; }
-      nav .logo { font-size: 1.16rem; }
-    }
-
-    main.container {
-      max-width: 1080px;
-      margin: 5.3rem auto 2.3rem;
-      padding: 0 2vw;
-      width: 100%;
-    }
-    @media (max-width: 600px) {
-      main.container { margin-top: 4.5rem; }
-    }
-
-    section {
-      margin-bottom: 3.7rem;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.62s cubic-bezier(.42,0,.58,1), transform 0.62s cubic-bezier(.42,0,.58,1);
-      background: transparent;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h1, h2 {
-      color: var(--primary);
-      margin-bottom: 1.1rem;
-      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-    h3 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      font-family: inherit;
-    }
-    p, li {
-      line-height: 1.7;
-      font-size: 1.1rem;
-      margin-bottom: 0.7rem;
-      color: var(--text-muted);
-    }
-    ul { margin-left: 1.2rem; margin-bottom: 1rem; }
-    strong { color: var(--primary); }
-
-    /* About Section */
-    #about {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    #about img {
-      width: 130px; height: 130px;
-      border-radius: 50%;
-      margin-bottom: 1.1rem;
-      border: 3.5px solid var(--accent);
-      box-shadow: 0 0 20px var(--accent-dark);
-      object-fit: cover;
-      background: var(--surface-light);
-      transition: transform 0.26s;
-    }
-    #about img:hover { transform: scale(1.07); }
-    #about p { max-width: 680px; margin: 0 auto 1rem; text-align: center; color: var(--text); }
-
-    /* Tabs */
-    .tabs {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .tab {
-      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
-      color: var(--surface);
-      padding: 0.5rem 1.13rem;
-      border-radius: 23px;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      font-size: 1.04rem;
-      opacity: 0.93;
-      transition: background 0.25s, color 0.25s, box-shadow 0.25s;
-      box-shadow: 0 1.5px 8px #0002;
-      outline: none;
-    }
-    .tab.active {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: var(--text);
-      box-shadow: 0 0 14px var(--accent-dark);
-      opacity: 1;
-    }
-    .tab:focus { outline: 2px solid var(--accent); }
-    .tab-content {
-      background: var(--card-bg);
-      padding: 1.17rem 1.5rem;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      max-height: 330px;
-      overflow-y: auto;
-      margin-bottom: 0.2rem;
-    }
-    .tab-content ul { margin-left: 1.15rem; }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
       gap: 1.5rem;
     }
-    .project-card {
-      background: var(--card-bg);
-      padding: 1.1rem 1.5rem 1.2rem 1.5rem;
-      border-radius: 11px;
-      box-shadow: 0 3px 14px #0d1128bb;
-      cursor: pointer;
+    .navbar .container {
       display: flex;
-      flex-direction: column;
-      transition: transform 0.25s, box-shadow 0.25s;
-      border: 1.5px solid var(--accent-dark);
-      min-height: 180px;
-    }
-    .project-card:hover, .project-card:focus {
-      transform: translateY(-7px) scale(1.03);
-      box-shadow: 0 8px 32px var(--primary-dark);
-      outline: 2px solid var(--accent);
-      z-index: 2;
-    }
-    .project-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-      font-family: 'Fira Mono', monospace;
-    }
-    .project-card p {
-      flex-grow: 1;
-      font-size: 1.01rem;
-      color: #e4eafd;
-      margin-bottom: 1rem;
-    }
-    .project-card .tech {
-      font-size: 0.98rem;
-      font-style: italic;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(20,19,35,0.97);
-      display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-      z-index: 100000;
-      padding: 1rem;
+      height: 64px;
     }
-    .modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .modal-content {
-      background: linear-gradient(120deg, var(--surface-light) 70%, var(--primary) 100%);
-      border-radius: 14px;
-      max-width: 540px;
-      width: 96vw;
-      padding: 2.1rem 1.4rem 2.1rem 2.1rem;
-      position: relative;
-      box-shadow: 0 0 30px var(--primary-dark);
+    .nav-links a {
+      text-decoration: none;
       color: var(--text);
-      max-height: 85vh;
-      overflow-y: auto;
+      font-weight: 500;
+      transition: color 0.2s;
     }
-    .modal-content h3 { margin-bottom: 1.1rem; }
-    .modal-content p { margin-bottom: 1rem; line-height: 1.5; }
-    .modal-content .tech { font-style: italic; color: var(--accent-dark); margin-bottom: 1rem; }
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 18px;
-      font-size: 2rem;
-      color: var(--accent);
-      cursor: pointer;
-      user-select: none;
-      font-weight: 900;
-      transition: color 0.3s;
+    .nav-links a:hover {
+      color: var(--secondary);
     }
-    .modal-close:focus { outline: 2px solid var(--primary); }
-    .modal-close:hover { color: var(--primary); }
-
-    /* Contact Form */
-    form {
-      max-width: 470px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background: var(--card-bg);
-      border-radius: 11px;
-      padding: 1.2rem 1.6rem 1.2rem 1.6rem;
+    .hero {
+      background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
+      color: var(--white);
+      padding: 70px 0 60px 0;
+      text-align: left;
       box-shadow: var(--shadow);
     }
-    input, textarea {
-      padding: 0.82rem 1rem;
-      border-radius: 6px;
-      border: none;
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .contact-info {
       font-size: 1rem;
-      background: var(--surface-light);
-      color: var(--text);
-      resize: vertical;
-      margin-bottom: 0.1rem;
+      opacity: 0.95;
+      margin-top: 8px;
     }
-    input:focus, textarea:focus {
-      outline: 2px solid var(--accent);
-      background: var(--surface);
-      color: var(--text);
+    .contact-info a {
+      color: var(--white);
+      text-decoration: underline;
+      transition: color 0.2s;
     }
-    button {
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      color: var(--surface);
-      font-weight: 700;
-      padding: 0.81rem 1.1rem;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.33s, color 0.22s;
+    .contact-info a:hover {
+      color: #d1c8fc;
     }
-    button:hover, button:focus {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: var(--text);
-      outline: 2px solid var(--accent-dark);
+    .section {
+      padding: 48px 0;
+      background: var(--bg);
     }
-    .form-error {
-      color: #ff6b6b;
-      font-size: 0.96rem;
-      text-align: center;
+    .bg-alt {
+      background: var(--bg-alt);
     }
-    .form-success {
-      color: var(--accent);
-      font-size: 1.1rem;
-      text-align: center;
+    .section h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .timeline {
+      border-left: 3px solid var(--primary);
+      padding-left: 20px;
+    }
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 8px;
+      width: 15px;
+      height: 15px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    .timeline-date {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+      display: block;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .skills-grid h4 {
+      color: var(--secondary);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+    .experience-item, .positions-item {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 26px 22px;
+      margin-bottom: 14px;
+    }
+    .company, .org {
+      color: var(--primary);
       font-weight: 600;
-      margin-top: 0.85rem;
+      font-size: 1.08rem;
     }
-
-    /* Scrollbar styling */
-    ::-webkit-scrollbar {
-      width: 10px;
+    .date {
+      color: var(--text-light);
+      font-size: 0.94rem;
+      margin-left: 10px;
     }
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary-dark);
-      border-radius: 5px;
+    .experience-item ul, .positions-item ul, .projects-grid ul {
+      margin: 14px 0 0 18px;
+      padding: 0;
     }
-    ::-webkit-scrollbar-track {
-      background: var(--surface);
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
     }
-
-    /* Responsive tweaks */
-    @media (max-width: 900px) {
-      main.container { padding: 0 4vw; }
-      .project-card { padding: 1.1rem 1rem; }
+    .project-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
     }
-    @media (max-width: 600px) {
-      nav { padding-left: 2vw; padding-right: 2vw; }
-      main.container { margin-top: 4.3rem; padding: 0 1vw; }
-      .tab-content { padding: 1rem 0.7rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      #about img { width: 100px; height: 100px; }
-      form { padding: 1rem 0.5rem; }
-      .modal-content { padding: 1.5rem 0.5rem 1.5rem 0.7rem; }
+    .project-card .tech-stack {
+      color: var(--secondary);
+      font-size: 0.97rem;
+      font-weight: 500;
     }
-    @media (max-width: 430px) {
-      .tab-content { font-size: 0.95rem; }
-      .tabs { gap: 0.5rem; }
-      section { margin-bottom: 2.3rem; }
+    .certifications-list {
+      list-style: disc inside;
+      padding-left: 0;
+      margin: 0;
+    }
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 18px 0 10px 0;
+      margin-top: 40px;
+      letter-spacing: .03em;
+      font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+      .container { width: 98%; }
+      .navbar .container { flex-direction: column; height: auto; padding: 10px 0; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; margin-top: 8px; }
+      .hero { padding: 40px 0 30px 0; text-align: left; }
+      .section { padding: 32px 0; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">Shailesh Mishra</div>
-    <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <ul id="navbar">
-      <li class="active"><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#positions">Positions</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <main class="container">
-    <section id="about" class="visible" tabindex="0">
-      <img src="https://i.pravatar.cc/150?img=12" alt="Shailesh Mishra" />
-      <h1>Shailesh Mishra</h1>
-      <p>Computer Science and Engineering student at Vellore Institute of Technology with a passion for web development, cloud computing, and AI. Skilled in full-stack development, cloud platforms, and software engineering best practices.</p>
-      <p>Based in Deoria, Uttar Pradesh, India.</p>
-    </section>
-    <section id="education" tabindex="0">
-      <h2>Education</h2>
-      <ul>
-        <li><strong>Vellore Institute of Technology, Vellore</strong> (09/2022 - Present)<br>B.Tech in Computer Science and Engineering, CGPA: 8.33/10.0</li>
-        <li><strong>Bapu Inter College, Salempur</strong> (04/2019 - 09/2021)<br>Senior Secondary School, Grade: 79.40%</li>
-        <li><strong>Manav Sthali Public School, Salempur</strong> (04/2017 – 04/2019)<br>High School Graduation, Grade: 92.80%</li>
+  <nav class="navbar">
+    <div class="container">
+      <span class="logo">Shailesh Mishra</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#positions">Positions</a></li>
+        <li><a href="#certifications">Certifications</a></li>
       </ul>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Shailesh Mishra</h1>
+        <p>Front-End Web Developer & Cloud Enthusiast</p>
+        <div class="contact-info">
+          <span>Deoria, Uttar Pradesh, IN</span> |
+          <span>+91 88085 08091</span> |
+          <span><a href="mailto:mishrashailesh154@gmail.com">mishrashailesh154@gmail.com</a></span> |
+          <span><a href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          Passionate Computer Science student at VIT Vellore, specializing in front-end web development and cloud technologies. Experienced in building scalable web apps, collaborating with multidisciplinary teams, and delivering optimized solutions.
+        </p>
+      </div>
     </section>
-    <section id="skills" tabindex="0">
-      <h2>Skills & Certifications</h2>
-      <div class="tabs" role="tablist" aria-label="Skills and Certifications Tabs">
-        <div class="tab active" role="tab" tabindex="0" aria-selected="true" aria-controls="skills-list" id="skills-tab">Skills</div>
-        <div class="tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="certifications-list" id="certifications-tab">Certifications</div>
-      </div>
-      <div id="skills-list" class="tab-content" role="tabpanel" aria-labelledby="skills-tab">
-        <ul>
-          <li><strong>Programming Languages:</strong> C++, Java, Python, JavaScript, C, R</li>
-          <li><strong>Web Technologies:</strong> HTML, CSS, Tailwind CSS, React.js, Next.js, Redux</li>
-          <li><strong>Databases:</strong> MongoDB, MySQL</li>
-          <li><strong>Cloud & DevOps:</strong> AWS, Azure AI, Google Cloud, Git, GitHub</li>
-          <li><strong>Tools & Platforms:</strong> Visual Studio Code, Postman, Docker, Jira</li>
-          <li><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Object-Oriented Programming (OOP), Operating Systems, Database Management Systems (DBMS), Computer Networks</li>
-        </ul>
-      </div>
-      <div id="certifications-list" class="tab-content" role="tabpanel" aria-labelledby="certifications-tab" hidden>
-        <ul>
-          <li>Certified AWS Solutions Architect (Jun 2025) — Proficient in cloud deployment and cost optimization</li>
-          <li>Microsoft Certified: Azure AI900 Certification for AI Engineer</li>
-          <li>Completed intensive web development bootcamp with hands-on deployment using HTML, CSS, and JavaScript</li>
-        </ul>
+    <section id="education" class="section bg-alt">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>Vellore Institute of Technology, Vellore</h3>
+            <span class="timeline-date">09/2022 - Current</span>
+            <p>BTech in Computer Science and Engineering<br>CGPA: <b>8.33/10.0</b></p>
+          </div>
+          <div class="timeline-item">
+            <h3>Bapu Inter College, Salempur</h3>
+            <span class="timeline-date">04/2019 - 09/2021</span>
+            <p>Senior Secondary School<br>Grade: <b>79.40%</b></p>
+          </div>
+          <div class="timeline-item">
+            <h3>Manav Sthali Public School, Salempur</h3>
+            <span class="timeline-date">04/2017 – 04/2019</span>
+            <p>High School Graduation<br>Grade: <b>92.80%</b></p>
+          </div>
+        </div>
       </div>
     </section>
-    <section id="experience" tabindex="0">
-      <h2>Experience</h2>
-      <ul>
-        <li>
-          <strong>Front-End Web Development Intern</strong> - Next24Technology (Remote) (06/2024 - 07/2024)
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div>
+            <h4>Programming Languages</h4>
+            <p>C++, Java, Python, JavaScript, C, R</p>
+          </div>
+          <div>
+            <h4>Web Technologies</h4>
+            <p>HTML, CSS, Tailwind CSS, React.js, Next.js, Redux</p>
+          </div>
+          <div>
+            <h4>Databases</h4>
+            <p>MongoDB, MySQL</p>
+          </div>
+          <div>
+            <h4>Cloud & DevOps</h4>
+            <p>AWS, Azure AI, Google Cloud, Git, GitHub</p>
+          </div>
+          <div>
+            <h4>Tools & Platforms</h4>
+            <p>Visual Studio Code, Postman, Docker, Jira</p>
+          </div>
+          <div>
+            <h4>Relevant Coursework</h4>
+            <p>Data Structures & Algorithms, OOP, Operating Systems, DBMS, Computer Networks</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="experience" class="section bg-alt">
+      <div class="container">
+        <h2>Professional Experience</h2>
+        <div class="experience-item">
+          <h3>Front-End Web Development Intern</h3>
+          <span class="company">Next24Technology - Remote</span>
+          <span class="date">06/2024 - 07/2024</span>
           <ul>
             <li>Built responsive web interfaces, improving load performance by 35% and achieving 98% cross-browser compatibility using HTML, CSS, and JavaScript.</li>
-            <li>Collaborated with an 8-member design team to implement 25+ scalable UI components, reducing development time by 50%.</li>
+            <li>Collaborated with 8-member design team to implement 25+ scalable UI components, reducing development time by 50%.</li>
             <li>Applied frontend best practices to optimize web performance and ensure cross-device compatibility.</li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
-    <section id="projects" tabindex="0">
-      <h2>Projects</h2>
-      <div class="projects-grid" id="projects-grid"></div>
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>The Luxury Hotel Concierge</h3>
+            <span class="tech-stack">MERN Stack, Next.js, Tailwind CSS</span>
+            <ul>
+              <li>Engineered full-stack hotel booking platform with RESTful APIs, implementing microservices architecture and achieving 99.9% uptime.</li>
+              <li>Improved booking efficiency by 40%, reducing user drop-offs by enhancing UI/UX flow.</li>
+              <li>Integrated secure payment gateways, ensuring smooth transactions for users.</li>
+            </ul>
+          </div>
+          <div class="project-card">
+            <h3>PGI HealthLink</h3>
+            <span class="tech-stack">Java, Next.js, Tailwind CSS, MongoDB</span>
+            <ul>
+              <li>Developed and scaled an online medical appointment platform, enabling real-time scheduling and improving patient engagement by 30%.</li>
+              <li>Automated appointment workflows using Java and Spring Boot, reducing manual administrative work by 60% and cutting scheduling time by 40%.</li>
+              <li>Integrated secure OAuth 2.0 and JWT-based authentication, ensuring 100% protection against unauthorized access and improving session security.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="positions" tabindex="0">
-      <h2>Positions of Responsibility</h2>
-      <ul>
-        <li>
-          <strong>Publicity Head</strong> - IEEE Information and Theory Society, VIT Vellore (01/2024 – 01/2025)
+    <section id="positions" class="section bg-alt">
+      <div class="container">
+        <h2>Positions of Responsibility</h2>
+        <div class="positions-item">
+          <h3>Publicity Head</h3>
+          <span class="org">IEEE Information and Theory Society, VIT Vellore</span>
+          <span class="date">01/2024 – 01/2025</span>
           <ul>
             <li>Spearheaded outreach and promotion for IC-ETITE’24, an international IEEE conference with 1600+ applications, 300+ paper presentations, and 20+ keynote sessions.</li>
             <li>Led coordination for logistics, speaker scheduling, and 25+ volunteers, ensuring seamless execution of 5+ high-impact technical events.</li>
             <li>Increased event engagement by 45% through targeted publicity campaigns across social and on-campus platforms, boosting the society's visibility.</li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
-    <section id="certifications" tabindex="0">
-      <h2>Certifications & Achievements</h2>
-      <ul>
-        <li>Certified AWS Solutions Architect (Jun 2025) — Proficient in cloud deployment and cost optimization</li>
-        <li>Microsoft Certified: Azure AI900 Certification for AI Engineer</li>
-        <li>Completed intensive web development bootcamp with hands-on deployment using HTML, CSS, and JavaScript</li>
-      </ul>
-    </section>
-    <section id="contact" tabindex="0">
-      <h2>Contact</h2>
-      <form id="contact-form" novalidate>
-        <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" />
-        <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true" />
-        <textarea id="message" name="message" rows="5" placeholder="Your Message" required aria-required="true"></textarea>
-        <button type="submit">Send Message</button>
-        <div class="form-error" id="form-error" role="alert" aria-live="assertive"></div>
-        <div class="form-success" id="form-success" role="alert" aria-live="polite"></div>
-      </form>
-      <p style="text-align:center; margin-top: 1.2rem;">
-        Email: <a href="mailto:mishrashailesh154@gmail.com">mishrashailesh154@gmail.com</a><br />
-        Phone: <a href="tel:+918808508091">+91 88085 08091</a><br />
-        LinkedIn: <a href="https://linkedin.com/in/shailesh-mishra" target="_blank" rel="noopener">linkedin.com/in/shailesh-mishra</a>
-      </p>
+    <section id="certifications" class="section">
+      <div class="container">
+        <h2>Achievements & Certifications</h2>
+        <ul class="certifications-list">
+          <li>Certified AWS Solutions Architect (Jun 2025) — Proficient in cloud deployment and cost optimization</li>
+          <li>Microsoft Certified: Azure AI900 Certification for AI Engineer</li>
+          <li>Completed intensive web dev bootcamp with hands-on deployment using HTML, CSS, JS.</li>
+        </ul>
+      </div>
     </section>
   </main>
-  <!-- Modal -->
-  <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
-    <div class="modal-content">
-      <span class="modal-close" id="modal-close" role="button" aria-label="Close modal" tabindex="0">&times;</span>
-      <h3 id="modal-title"></h3>
-      <p class="tech" id="modal-tech"></p>
-      <p id="modal-desc"></p>
+  <footer>
+    <div class="container">
+      <p>© 2025 Shailesh Mishra. All rights reserved.</p>
     </div>
-  </div>
+  </footer>
   <script>
-    // Dynamic projects data
-    const projects = [
-      {
-        title: "The Luxury Hotel Concierge",
-        tech: "MERN Stack, Next.js, Tailwind CSS",
-        short: "Engineered a full-stack hotel booking platform with RESTful APIs and microservices architecture achieving 99.9% uptime.",
-        desc: "Engineered a full-stack hotel booking platform with RESTful APIs and microservices architecture achieving 99.9% uptime. Improved booking efficiency by 40%, reducing user drop-offs by enhancing UI/UX flow. Integrated secure payment gateways, ensuring smooth transactions for users.",
-      },
-      {
-        title: "PGI HealthLink",
-        tech: "Java, Next.js, Tailwind CSS, MongoDB",
-        short: "Developed an online medical appointment platform enabling real-time scheduling and improving patient engagement by 30%.",
-        desc: "Developed and scaled an online medical appointment platform, enabling real-time scheduling and improving patient engagement by 30%. Automated appointment workflows using Java and Spring Boot, reducing manual administrative work by 60% and cutting scheduling time by 40%. Integrated secure OAuth 2.0 and JWT-based authentication, ensuring 100% protection against unauthorized access and improving session security.",
-      },
-    ];
-    // Render projects dynamically
-    function renderProjects() {
-      const grid = document.getElementById('projects-grid');
-      grid.innerHTML = "";
-      projects.forEach((p, i) => {
-        const card = document.createElement('div');
-        card.className = "project-card";
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-pressed', 'false');
-        card.setAttribute('aria-label', `Open details for ${p.title} project`);
-        card.setAttribute('data-title', p.title);
-        card.setAttribute('data-tech', p.tech);
-        card.setAttribute('data-desc', p.desc);
-
-        card.innerHTML = `
-          <h3>${p.title}</h3>
-          <p>${p.short}</p>
-          <div class="tech">${p.tech}</div>
-        `;
-        card.addEventListener('click', () => openModal(card));
-        card.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openModal(card);
-          }
-        });
-        grid.appendChild(card);
-      });
-    }
-    renderProjects();
-
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const navUl = document.getElementById('navbar');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navUl.classList.toggle('open');
-    });
-    // Close menu on link click (mobile)
-    navUl.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (navUl.classList.contains('open')) {
-          navUl.classList.remove('open');
-          hamburger.classList.remove('active');
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
-
-    // Smooth fade-in animation on scroll and nav active link highlight
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('main.container section');
-      const navLi = document.querySelectorAll('nav ul li');
-      function activateSection() {
-        let index = sections.length;
-        while (--index && window.scrollY + 160 < sections[index].offsetTop) {}
-        navLi.forEach((li) => li.classList.remove('active'));
-        if (navLi[index]) navLi[index].classList.add('active');
-      }
-      function revealSections() {
-        sections.forEach(section => {
-          const sectionTop = section.getBoundingClientRect().top;
-          const windowHeight = window.innerHeight;
-          if (sectionTop < windowHeight - 100) {
-            section.classList.add('visible');
-          }
-        });
-      }
-      window.addEventListener('scroll', () => {
-        activateSection();
-        revealSections();
-      });
-      revealSections();
-    });
-
-    // Tabs for Skills and Certifications
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-          t.setAttribute('tabindex', '-1');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        tab.setAttribute('tabindex', '0');
-        tabContents.forEach(content => { content.hidden = true; });
-        const contentId = tab.getAttribute('aria-controls');
-        document.getElementById(contentId).hidden = false;
-      });
-      tab.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          let index = Array.from(tabs).indexOf(e.target);
-          if (e.key === 'ArrowRight') { index = (index + 1) % tabs.length; }
-          else { index = (index - 1 + tabs.length) % tabs.length; }
-          tabs[index].focus();
-          tabs[index].click();
-        }
-      });
-    });
-
-    // Project modal functionality
-    const modal = document.getElementById('project-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalTech = document.getElementById('modal-tech');
-    const modalDesc = document.getElementById('modal-desc');
-    const modalClose = document.getElementById('modal-close');
-    function openModal(card) {
-      modalTitle.textContent = card.getAttribute('data-title');
-      modalTech.textContent = card.getAttribute('data-tech');
-      modalDesc.textContent = card.getAttribute('data-desc');
-      modal.classList.add('active');
-      modal.setAttribute('tabindex', '0');
-      modal.focus();
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    modalClose.addEventListener('click', closeModal);
-    modalClose.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        closeModal();
-      }
-    });
-    modal.addEventListener('click', e => {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-    });
-
-    // Contact form validation and submission (dummy)
-    const form = document.getElementById('contact-form');
-    const formError = document.getElementById('form-error');
-    const formSuccess = document.getElementById('form-success');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      formError.textContent = '';
-      formSuccess.textContent = '';
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-      if (!name || !email || !message) {
-        formError.textContent = 'Please fill in all fields.';
-        return;
-      }
-      if (!validateEmail(email)) {
-        formError.textContent = 'Please enter a valid email address.';
-        return;
-      }
-      formSuccess.textContent = 'Thank you for your message! I will get back to you soon.';
-      form.reset();
-      setTimeout(() => { formSuccess.textContent = ''; }, 5000);
-    });
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email.toLowerCase());
-    }
   </script>
 </body>
 </html>
