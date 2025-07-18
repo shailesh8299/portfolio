@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shailesh Mishra | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #5B21B6;
+      --secondary: #7C3AED;
+      --bg: #F3F4F6;
+      --bg-alt: #E0E7FF;
+      --text: #18181B;
+      --text-light: #71717A;
+      --white: #fff;
+      --shadow: 0 4px 24px rgba(91,33,182,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .navbar {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+    .hero {
+      background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
+      color: var(--white);
+      padding: 70px 0 60px 0;
+      text-align: left;
+      box-shadow: var(--shadow);
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .contact-info {
+      font-size: 1rem;
+      opacity: 0.95;
+      margin-top: 8px;
+    }
+    .contact-info a {
+      color: var(--white);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .contact-info a:hover {
+      color: #d1c8fc;
+    }
+    .section {
+      padding: 48px 0;
+      background: var(--bg);
+    }
+    .bg-alt {
+      background: var(--bg-alt);
+    }
+    .section h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .timeline {
+      border-left: 3px solid var(--primary);
+      padding-left: 20px;
+    }
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 8px;
+      width: 15px;
+      height: 15px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    .timeline-date {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+      display: block;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .skills-grid h4 {
+      color: var(--secondary);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+    .experience-item, .positions-item {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 26px 22px;
+      margin-bottom: 14px;
+    }
+    .company, .org {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.08rem;
+    }
+    .date {
+      color: var(--text-light);
+      font-size: 0.94rem;
+      margin-left: 10px;
+    }
+    .experience-item ul, .positions-item ul, .projects-grid ul {
+      margin: 14px 0 0 18px;
+      padding: 0;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    .project-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 22px 18px;
+    }
+    .project-card .tech-stack {
+      color: var(--secondary);
+      font-size: 0.97rem;
+      font-weight: 500;
+    }
+    .certifications-list {
+      list-style: disc inside;
+      padding-left: 0;
+      margin: 0;
+    }
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 18px 0 10px 0;
+      margin-top: 40px;
+      letter-spacing: .03em;
+      font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+      .container { width: 98%; }
+      .navbar .container { flex-direction: column; height: auto; padding: 10px 0; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; margin-top: 8px; }
+      .hero { padding: 40px 0 30px 0; text-align: left; }
+      .section { padding: 32px 0; }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <span class="logo">Shailesh Mishra</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#positions">Positions</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>Shailesh Mishra</h1>
+        <p>Front-End Web Developer & Cloud Enthusiast</p>
+        <div class="contact-info">
+          <span>Deoria, Uttar Pradesh, IN</span> |
+          <span>+91 88085 08091</span> |
+          <span><a href="mailto:mishrashailesh154@gmail.com">mishrashailesh154@gmail.com</a></span> |
+          <span><a href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a></span>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>
+          Passionate Computer Science student at VIT Vellore, specializing in front-end web development and cloud technologies. Experienced in building scalable web apps, collaborating with multidisciplinary teams, and delivering optimized solutions.
+        </p>
+      </div>
+    </section>
+    <section id="education" class="section bg-alt">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>Vellore Institute of Technology, Vellore</h3>
+            <span class="timeline-date">09/2022 - Current</span>
+            <p>BTech in Computer Science and Engineering<br>CGPA: <b>8.33/10.0</b></p>
+          </div>
+          <div class="timeline-item">
+            <h3>Bapu Inter College, Salempur</h3>
+            <span class="timeline-date">04/2019 - 09/2021</span>
+            <p>Senior Secondary School<br>Grade: <b>79.40%</b></p>
+          </div>
+          <div class="timeline-item">
+            <h3>Manav Sthali Public School, Salempur</h3>
+            <span class="timeline-date">04/2017 – 04/2019</span>
+            <p>High School Graduation<br>Grade: <b>92.80%</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div>
+            <h4>Programming Languages</h4>
+            <p>C++, Java, Python, JavaScript, C, R</p>
+          </div>
+          <div>
+            <h4>Web Technologies</h4>
+            <p>HTML, CSS, Tailwind CSS, React.js, Next.js, Redux</p>
+          </div>
+          <div>
+            <h4>Databases</h4>
+            <p>MongoDB, MySQL</p>
+          </div>
+          <div>
+            <h4>Cloud & DevOps</h4>
+            <p>AWS, Azure AI, Google Cloud, Git, GitHub</p>
+          </div>
+          <div>
+            <h4>Tools & Platforms</h4>
+            <p>Visual Studio Code, Postman, Docker, Jira</p>
+          </div>
+          <div>
+            <h4>Relevant Coursework</h4>
+            <p>Data Structures & Algorithms, OOP, Operating Systems, DBMS, Computer Networks</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="experience" class="section bg-alt">
+      <div class="container">
+        <h2>Professional Experience</h2>
+        <div class="experience-item">
+          <h3>Front-End Web Development Intern</h3>
+          <span class="company">Next24Technology - Remote</span>
+          <span class="date">06/2024 - 07/2024</span>
+          <ul>
+            <li>Built responsive web interfaces, improving load performance by 35% and achieving 98% cross-browser compatibility using HTML, CSS, and JavaScript.</li>
+            <li>Collaborated with 8-member design team to implement 25+ scalable UI components, reducing development time by 50%.</li>
+            <li>Applied frontend best practices to optimize web performance and ensure cross-device compatibility.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>The Luxury Hotel Concierge</h3>
+            <span class="tech-stack">MERN Stack, Next.js, Tailwind CSS</span>
+            <ul>
+              <li>Engineered full-stack hotel booking platform with RESTful APIs, implementing microservices architecture and achieving 99.9% uptime.</li>
+              <li>Improved booking efficiency by 40%, reducing user drop-offs by enhancing UI/UX flow.</li>
+              <li>Integrated secure payment gateways, ensuring smooth transactions for users.</li>
+            </ul>
+          </div>
+          <div class="project-card">
+            <h3>PGI HealthLink</h3>
+            <span class="tech-stack">Java, Next.js, Tailwind CSS, MongoDB</span>
+            <ul>
+              <li>Developed and scaled an online medical appointment platform, enabling real-time scheduling and improving patient engagement by 30%.</li>
+              <li>Automated appointment workflows using Java and Spring Boot, reducing manual administrative work by 60% and cutting scheduling time by 40%.</li>
+              <li>Integrated secure OAuth 2.0 and JWT-based authentication, ensuring 100% protection against unauthorized access and improving session security.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="positions" class="section bg-alt">
+      <div class="container">
+        <h2>Positions of Responsibility</h2>
+        <div class="positions-item">
+          <h3>Publicity Head</h3>
+          <span class="org">IEEE Information and Theory Society, VIT Vellore</span>
+          <span class="date">01/2024 – 01/2025</span>
+          <ul>
+            <li>Spearheaded outreach and promotion for IC-ETITE’24, an international IEEE conference with 1600+ applications, 300+ paper presentations, and 20+ keynote sessions.</li>
+            <li>Led coordination for logistics, speaker scheduling, and 25+ volunteers, ensuring seamless execution of 5+ high-impact technical events.</li>
+            <li>Increased event engagement by 45% through targeted publicity campaigns across social and on-campus platforms, boosting the society's visibility.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="certifications" class="section">
+      <div class="container">
+        <h2>Achievements & Certifications</h2>
+        <ul class="certifications-list">
+          <li>Certified AWS Solutions Architect (Jun 2025) — Proficient in cloud deployment and cost optimization</li>
+          <li>Microsoft Certified: Azure AI900 Certification for AI Engineer</li>
+          <li>Completed intensive web dev bootcamp with hands-on deployment using HTML, CSS, JS.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>© 2025 Shailesh Mishra. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
